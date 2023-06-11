@@ -82,17 +82,17 @@ public class AdminProgram {
     public static void main(String[] args) 
     {
         Loading ldScreen =  new Loading();
-        ldScreen.showLDScreen();
+        /*ldScreen.showLDScreen();
 
         try
         {
-            Thread.sleep(10000);
+            Thread.sleep(5000);
         }
         catch (InterruptedException e)
         {
             e.printStackTrace();
         }
-        //ldScreen.hideLDScreen();
+        //ldScreen.hideLDScreen();*/
 
         List.retrieveDB();
         while(true)
