@@ -1,7 +1,10 @@
+import javax.swing.*;
 import java.util.*;
 
-public class AdminProgram {
+public class AdminProgram
+{
     static Scanner scan = new Scanner(System.in);
+
     public static void registration()
     {
         int choice = 0;
@@ -81,20 +84,13 @@ public class AdminProgram {
 
     public static void main(String[] args) 
     {
-        Loading ldScreen =  new Loading();
-        /*ldScreen.showLDScreen();
-
-        try
-        {
-            Thread.sleep(5000);
-        }
-        catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        }
-        //ldScreen.hideLDScreen();*/
 
         List.retrieveDB();
+        new dbUI();
+
+
+/*
+
         while(true)
         {
             switch(menu())
@@ -106,6 +102,8 @@ public class AdminProgram {
                 default: System.out.print("\033[0;31mCHOOSE 1-4 ONLY!");
 
             }
-        }
+        }*/
     }
+
+
 }

@@ -50,7 +50,7 @@ public class List
         {
             while(p != null){
                 fp.write(p.rec.name + "\t" + p.rec.course + "\t" + p.rec.yrSec + "\t" + p.rec.schoolID + "\t" +
-                        p.rec.address + "\t" + p.rec.contactNum + "\n");
+                         p.rec.contactNum + "\t" + p.rec.address + "\n");
                 p = p.next;
             }
         }
@@ -75,8 +75,8 @@ public class List
                 rec.course = data[1].trim();
                 rec.yrSec = data[2].trim();
                 rec.schoolID = data[3].trim();
-                rec.address = data[4].trim();
-                rec.contactNum = data[5].trim();
+                rec.contactNum = data[4].trim();
+                rec.address = data[5].trim();
                 addRec(rec);
             }
         }

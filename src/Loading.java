@@ -44,6 +44,7 @@ public class Loading extends JFrame{
             }
             counter++;
         }
+        setVisible(false);
     }
 
 
