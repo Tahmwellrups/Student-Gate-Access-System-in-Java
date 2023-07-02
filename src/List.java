@@ -2,9 +2,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+
 public class List
 {
-    static Node l;
+    public static Node l;
     public static void addRec(Data r)
     {
         Node newNode = new Node();
@@ -25,22 +26,25 @@ public class List
         }
     }
 
-    public static void displayDB()
+    public static boolean regCheck(Data r)
     {
-        Node p = l;
-        int i = 1;
-        while(p != null)
+        if (l == null) //If it is empty, proceed to the registration
         {
-            System.out.print(i + ".|");
-            System.out.print("\t" + p.rec.name);
-            System.out.print("\t\t" + p.rec.course);
-            System.out.print("\t\t" + p.rec.yrSec);
-            System.out.print("\t\t" + p.rec.schoolID);
-            System.out.print("\t\t" + p.rec.address);
-            System.out.print("\t\t" + p.rec.contactNum + "\n");
-            p = p.next;
-            i++;
+            return true;
         }
+        else
+        {
+            Node p = l;
+            while (p != null)
+            {
+                if(p.rec.schoolID.equals(r.schoolID))//If the school ID, is already existing then do not register
+                {
+                    return false;
+                }
+                p = p.next;
+            }
+        }
+        return true;
     }
 
     public static void saveDB()
@@ -49,8 +53,33 @@ public class List
         try(FileWriter fp = new FileWriter("mainDB.txt"))
         {
             while(p != null){
-                fp.write(p.rec.name + "\t" + p.rec.course + "\t" + p.rec.yrSec + "\t" + p.rec.schoolID + "\t" +
-                         p.rec.contactNum + "\t" + p.rec.address + "\n");
+                String name = AdminProgram.encryption.encrypt(p.rec.name);
+                String course = AdminProgram.encryption.encrypt(p.rec.course);
+                String yrSec = AdminProgram.encryption.encrypt(p.rec.yrSec);
+                String schoolID = AdminProgram.encryption.encrypt(p.rec.schoolID);
+                String contactNum = AdminProgram.encryption.encrypt(p.rec.contactNum);
+                String address = AdminProgram.encryption.encrypt(p.rec.address);
+                fp.write(name + "\t" + course + "\t" + yrSec + "\t" + schoolID + "\t" +
+                         contactNum + "\t" + address + "\n");
+                p = p.next;
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        try(FileWriter fp = new FileWriter("C:IdeaProjects//AccessSystem//mainDB.txt"))
+        {
+            while(p != null){
+                String name = AdminProgram.encryption.encrypt(p.rec.name);
+                String course = AdminProgram.encryption.encrypt(p.rec.course);
+                String yrSec = AdminProgram.encryption.encrypt(p.rec.yrSec);
+                String schoolID = AdminProgram.encryption.encrypt(p.rec.schoolID);
+                String contactNum = AdminProgram.encryption.encrypt(p.rec.contactNum);
+                String address = AdminProgram.encryption.encrypt(p.rec.address);
+                fp.write(name + "\t" + course + "\t" + yrSec + "\t" + schoolID + "\t" +
+                        contactNum + "\t" + address + "\n");
                 p = p.next;
             }
         }
@@ -85,6 +114,12 @@ public class List
             e.printStackTrace();
         }
     }
-
+    public static void saveToFD(String ID) {
+        try (FileWriter fp = new FileWriter("D:/studentID.txt")) {
+            fp.write(ID);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

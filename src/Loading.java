@@ -44,46 +44,7 @@ public class Loading extends JFrame{
             }
             counter++;
         }
-        setVisible(false);
+        dispose();
     }
-
 
 }
-/*
-import javax.swing.*;
-import java.awt.*;
-import java.util.Objects;
-
-public class Loading extends JFrame{
-
-    private Image background = new ImageIcon("FBG.png").getImage();
-    private Image logo = new ImageIcon("FLOGO.png").getImage();
-    public Loading()
-    {
-
-        setIconImage(logo);
-        setSize(854, 480);
-        setUndecorated(true);
-        setLocationRelativeTo(null);
-        setResizable(false);
-        setLayout(new BorderLayout());
-    }
-
-    public void showLDScreen()
-    {
-        setVisible(true);
-    }
-    public void hideLDScreen()
-    {
-        setVisible(false);
-    }
-
-    @Override
-    public void paint(Graphics g)
-    {
-        super.paint(g);
-
-        g.drawImage(background, 0, 0, null);
-    }
-}
-*/
